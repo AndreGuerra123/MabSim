@@ -15,8 +15,9 @@ cd ~.node-red/mabsim
 node-red
 ```
 then the following steps are necessary:
- #1 change the name of the flows to your hostname, (otherwise flows won't open)
- #2 after opening node-red change structured node path to the absolute path location of the file (differ between unix and windows)
+
+- [ ] change the name of the flows to your hostname, (otherwise flows won't open)
+- [ ] after opening node-red change structured node path to the absolute path location of the file (differ between unix and windows)
  
 
 Automatically will start in http://127.0.0.1:1880
