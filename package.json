@@ -1,0 +1,10 @@
+{
+  "name": "node-red-project",
+  "description": "A Node-RED Project",
+  "version": "0.0.1",
+  "dependencies": {
+    "node-red-contrib-iiot-opcua": "~2.7.1",
+    "node-red-contrib-pythonshell": "~1.5.4",
+    "node-red-dashboard": "~2.9.4"
+  }
+}
