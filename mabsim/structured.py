@@ -96,6 +96,7 @@ try:
     out_4 = json.dumps(out_3.tolist())
     print(out_4)
 
+
 except Exception as e:
 
     exc_type, exc_obj, exc_tb = sys.exc_info()
