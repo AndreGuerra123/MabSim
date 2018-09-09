@@ -3,33 +3,37 @@ os.environ["OMPI_MCA_btl_base_warn_component_unused"] = "0"
 from fenics import *;
 set_log_active(False)
 import sys,json;
-args =  json.loads(sys.argv[1]);
 import numpy as np;
 import pandas as pd;
 
+#This file is runned when the node receives data.
+
+args =  json.loads(sys.argv[1]);
+
 try:
     #Defining initial conditions and inputs
+    #{iter,dt,mab,E1max,z1max,w1,Kd1,vo,kf1}
 
     iter = args['iter']
-    input = np.array(args['input'])
+    T = args['dt']
+    steps = 10; # TODO: add to graphical
+    dt = Constant(T/steps) # differnetiation in time by a a factor of 100
+
+    mab0 = args['mab0']
+    input = np.zeros(3) #Number of  glycosylaltion species
+    input[0] = mab0
 
     #Defining parameters
 
     w = Constant(args['vo'])
-    # kf1 = Constant(args['kf1'])
+    kf1 = Constant(args['kf1'])
     E1max = Constant(args['E1max'])
     z1max = Constant(args['z1max'])
     w1 = Constant(args['w1'])
     Kd1 = Constant(args['Kd1'])
 
-    #This system is from a continuous process evaluated in real time, so the retrieved dt is the actual time elapsed
-
-    T = args['dt']     # final time
-    num_steps = 10    # number of time steps
-    dt = Constant(T / num_steps) # time step size
-
     #Defining Mesh
-    m = 10;
+    m = 100; #TODO: add as  graphical component
     mesh = UnitIntervalMesh(m)
 
     #Defining function space for system of concentrations
